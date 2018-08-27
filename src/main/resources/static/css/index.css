@@ -1,0 +1,35 @@
+.pagebtn{
+    display: inline-block;
+    line-height: 0px;height: 30px;padding: 30px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.pagebtn:hover{
+    color: #1C907D;
+    border-bottom: 1px solid #1C907D;
+    text-decoration: none;
+}
+
+.active.pagebtn{
+    color: #1C907D;
+    border-bottom: 1px solid #1C907D;
+    text-decoration: none;
+}
+
+.bottom_show a{
+    line-height: 90px;
+    margin-right: 40px;
+    color: #ffffff;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+.bottom_show a:hover{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover{
+    cursor: pointer;
+}

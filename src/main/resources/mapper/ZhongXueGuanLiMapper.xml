@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.spring.springboot.dao.ZhongXueGuanliDao">
+
+	<select id="jianchachongfu" resultType="int" parameterType="map">
+		select
+		count(*) 
+		from user_info
+		where user_name = #{user_name}
+	</select>
+	
+	<insert id="zhuce" parameterType="map">
+		insert into user_info set user_name = #{user_name},user_password = #{user_password},user_type=#{user_type},user_mingzi = #{user_mingzi},user_banji=#{user_banji}
+	</insert>
+	
+	<select id="gldenglu" resultType="int" parameterType="map">
+		select
+		count(*) 
+		from admin_info
+		where admin_name = #{admin_name} and admin_password = #{admin_password};
+	</select>
+	
+	<select id="chaxungonglv" resultType="map" parameterType="map">
+		select
+		*
+		from gl_info
+		where 2 > 1
+		and gl_biaoti like concat('%',#{gl_biaoti},'%')
+		limit #{offset},#{pagesize}
+	</select>
+	
+	<select id="getCountGonglv" parameterType="map" resultType="int">
+		select
+		count(*)
+		from gl_info
+		where 2 > 1
+		and gl_biaoti like concat('%',#{gl_biaoti},'%')
+	</select>
+	
+	
+	<select id="jianchagonglvchongfu" resultType="int" parameterType="map">
+		select
+		count(*)
+		from gl_info
+		where gl_biaoti = #{gl_biaoti}
+	</select>
+	
+	
+	<insert id="shangchuangonglv" parameterType="map">
+		insert into gl_info set 
+		gl_biaoti = #{gl_biaoti},gl_neirong = #{gl_neirong},gl_scrq = now();
+	</insert>
+	
+	
+	<delete id="shanchugonglv" parameterType="map">
+		delete from gl_info
+		where 2 > 1
+		and id = #{id}
+	</delete>
+	
+	
+	<select id="chaxungonglvbyid" parameterType="map" resultType="map">
+		select
+		*
+		from gl_info
+		where 2 > 1
+		and id = #{id}
+	</select>
+	
+	
+	<select id="xiugaigonglvcha" parameterType="map" resultType="int">
+		select
+		count(*)
+		from gl_info
+		where 2 > 1
+		and id != #{id}
+		and gl_biaoti = #{gl_biaoti}
+	</select>
+	
+	
+	<update id="xiugaigonglv" parameterType="map">
+		update gl_info set 
+		gl_biaoti = #{gl_biaoti},gl_neirong = #{gl_neirong} where id = #{id}
+	</update>
+	
+	
+	<insert id="shangchuankecheng" parameterType="map">
+		insert into kc_info set 
+		kc_mc = #{kc_mc};
+	</insert>
+	
+	<select id="jianchachongfuke" parameterType="map" resultType="int">
+		select
+		count(*)
+		from kc_info
+		where 2 > 1
+		and kc_mc = #{kc_mc}
+	</select>
+	
+
+	
+	<select id="chaxunkecheng" resultType="map" parameterType="map">
+		select
+		*
+		from kc_info
+		where 2 > 1
+		and kc_mc like concat('%',#{kc_mc},'%')
+		limit #{offset},#{pagesize}
+	</select>
+	
+	
+	<select id="getCountKC" resultType="int" parameterType="map">
+		select
+		count(*)
+		from kc_info
+		where 2 > 1
+		and kc_mc like concat('%',#{kc_mc},'%')
+	</select>
+	
+	
+	<delete id="shanchukecheng" parameterType="map">
+		delete
+		from kc_info
+		where 2 > 1
+		and id = #{id}
+	</delete>
+	
+	<select id="jianchaxgkc" resultType="int" parameterType="map">
+		select
+		count(*)
+		from kc_info
+		where 2 > 1
+		and kc_mc = #{kc_mc} and id != #{id}
+	</select>
+	
+	<update id="xgkcmc" parameterType="map">
+		update kc_info set 
+		kc_mc = #{kc_mc} where id = #{id}
+	</update>
+	
+	
+	
+	
+	
+	<select id="getCountBJ" resultType="int" parameterType="map">
+		select
+		count(*)
+		from banji_info
+		where 2 > 1
+	</select>
+	
+	<select id="chaxunbanji" resultType="map" parameterType="map">
+		select
+		id,banji_name
+		from banji_info
+		where 2 > 1
+		limit #{offset},#{pagesize}
+	</select>
+	
+	<insert id="cjbj" parameterType="map">
+		insert into banji_info set 
+		banji_name = #{banji_name};
+	</insert>
+	
+	
+	<select id="jcbjcf" resultType="int" parameterType="map">
+		select
+		count(*)
+		from banji_info
+		where banji_name = #{banji_name}
+	</select>
+	
+	
+	
+	<delete id="shanchubanji" parameterType="map">
+		delete
+		from banji_info
+		where 2 > 1
+		and id = #{id}
+	</delete>
+	
+	
+	<select id="jianchaxgbj" resultType="int" parameterType="map">
+		select
+		count(*)
+		from banji_info
+		where 2 > 1
+		and banji_name = #{banji_name} and id != #{id}
+	</select>
+	
+	
+	<update id="xgbanjimc" parameterType="map">
+		update banji_info set 
+		banji_name = #{banji_name} where id = #{id}
+	</update>
+	
+	
+	
+	<select id="xueshengguanli" resultType="map" parameterType="map">
+		select
+		*
+		from user_info
+		where 2 > 1
+		and user_mingzi like concat('%',#{user_name},'%')
+		and user_type = '学生'
+		limit #{offset},#{pagesize}
+	</select>
+	
+	
+	
+	<select id="getCountXS" resultType="int" parameterType="map">
+		select
+		count(*)
+		from user_info
+		where 2 > 1
+		and user_type = '学生'
+	</select>
+	
+	
+	<select id="jiaoshiguanli" resultType="map" parameterType="map">
+		select
+		*
+		from user_info
+		where 2 > 1
+		and user_mingzi like concat('%',#{user_mingzi},'%')
+		and user_type = '教师'
+		limit #{offset},#{pagesize}
+	</select>
+	
+	
+	
+	<select id="getCountJS" resultType="int" parameterType="map">
+		select
+		count(*)
+		from user_info
+		where 2 > 1
+		and user_type = '教师'
+	</select>
+	
+	<delete id="shanchujs" parameterType="map">
+		delete
+		from user_info
+		where 2 > 1
+		and id = #{id}
+	</delete>
+	
+	<select id="hqkc" resultType="map" parameterType="map">
+		select
+		*
+		from kc_info
+		where 2 > 1
+	</select>
+	
+	
+	<select id="hqbj" resultType="map" parameterType="map">
+		select
+		*
+		from banji_info
+		where 2 > 1
+	</select>
+	
+	
+	
+	<select id="jckeap" resultType="int" parameterType="map">
+		select
+		count(*)
+		from ls_kc_info
+		where 2 > 1
+		and ls_mingzi = #{ls_mingzi}
+		and ls_kc_sj = #{ls_kc_sj}
+	</select>
+	
+	
+	<insert id="apkc" parameterType="map">
+		insert into ls_kc_info set 
+		ls_kc = #{ls_kc},ls_kc_sj=#{ls_kc_sj},ls_mingzi=#{ls_mingzi},ls_kc_bj=#{ls_kc_bj};
+	</insert>
+	
+	
+	<select id="lskccx" resultType="map" parameterType="map">
+		select
+		*
+		from ls_kc_info
+		where 2 > 1
+		and ls_mingzi = #{ls_mingzi}
+	</select>
+	
+	
+	<delete id="sckc" parameterType="map">
+		delete from ls_kc_info where id = #{id}
+	</delete>
+	
+	
+	<select id="jcchongfuuser" resultType="int" parameterType="map">
+		select
+		count(*)
+		from user_info
+		where 2 > 1
+		and user_name = #{user_name}
+		and id != #{id}
+	</select>
+	
+	
+	
+	
+	<update id="xiugaijsinfo" parameterType="map">
+		update user_info set 
+		user_name = #{user_name},user_password=#{user_password},user_mingzi=#{user_mingzi} where id = #{id}
+	</update>
+	
+	
+	
+	<delete id="shanchuxuesheng" parameterType="map">
+		delete from user_info where id = #{id}
+	</delete>
+	
+	
+	
+	<insert id="tjcj" parameterType="map">
+		insert into xscj_info set 
+		xs_cj = #{xs_cj},xs_kc=#{xs_kc},xs_mingzi=#{xs_mingzi}
+	</insert>
+	
+	<select id="chaxunchengji" resultType="map" parameterType="map">
+		select
+		*
+		from xscj_info
+		where 2 > 1
+		and xs_mingzi = #{user_mingzi}
+	</select>
+	
+	<delete id="shanchuchengji" parameterType="map">
+		delete from xscj_info where id = #{id}
+	</delete>
+	
+	
+	<update id="xgcj" parameterType="map">
+		update xscj_info set 
+		xs_cj = #{xs_cj} where id = #{id}
+	</update>
+	
+	
+	<select id="denglu" parameterType="map" resultType="int">
+		select
+		count(*)
+		from user_info
+		where 2 > 1
+		and user_name = #{user_name}
+		and user_password = #{user_password}
+	</select>
+	
+	
+	<select id="getUser" parameterType="map" resultType="map">
+		select
+		*
+		from user_info
+		where 2 > 1
+		and user_name = #{user_name}
+	</select>
+	
+	<select id="getAdmin" parameterType="map" resultType="map">
+		select
+		*
+		from admin_info
+		where 2 > 1
+		and admin_name = #{admin_name}
+	</select>
+	
+	
+	
+	
+	
+	<select id="chaxungonggao" parameterType="map" resultType="map">
+		select
+		*
+		from gl_info
+		where 2 > 1
+		and gl_biaoti like concat('%',#{gl_biaoti},'%')
+		limit #{offset},#{pagesize}
+	</select>
+	
+	
+	
+	<select id="getCountGL" parameterType="map" resultType="int">
+		select
+		count(*)
+		from gl_info
+		where 2 > 1
+		and gl_biaoti like concat('%',#{gl_biaoti},'%')
+	</select>
+	
+	
+	
+	<select id="gscx" parameterType="map" resultType="map">
+		select
+		*
+		from gl_info
+		where 2 > 1
+		and id = #{id}
+	</select>
+	
+	<select id="kecx" parameterType="map" resultType="map">
+		select
+		*
+		from ls_kc_info
+		where 2 > 1
+		and ls_mingzi = #{ls_mingzi}
+	</select>
+	
+	<insert id="ksap" parameterType="map">
+		insert into ks_info set 
+		ks_kc = #{ks_kc},ks_bj=#{ks_bj},ks_ls=#{ks_ls},ks_sj=#{ks_sj}
+	</insert>
+	
+	
+	
+	<select id="apks" parameterType="map" resultType="map">
+		select
+		*
+		from ks_info
+		where 2 > 1
+		and ks_ls = #{ks_ls}
+	</select>
+	
+	
+	
+	<delete id="shanchukaoshi" parameterType="map">
+		delete from ks_info where id = #{id}
+	</delete>
+	
+	
+	<update id="xgkssj" parameterType="map">
+		update ks_info set 
+		ks_sj = #{ks_sj} where id = #{id}
+	</update>
+	
+	
+	<update id="xiugaixueshengxinxi" parameterType="map">
+		update user_info set 
+		user_mingzi = #{user_mingzi},user_name = #{user_name},user_password = #{user_password}
+		,user_banji = #{user_banji} where id = #{id}
+	</update>
+	
+	<select id="showlishi" parameterType="map" resultType="map">
+		select
+		*
+		from xscj_info
+		where 2 > 1
+		and xs_mingzi = #{xs_mingzi}
+	</select>
+	
+	<select id="geuBanji" parameterType="map" resultType="string">
+		select
+		user_banji
+		from user_info
+		where 2 > 1
+		and user_mingzi = #{xs_mingzi}
+	</select>
+	
+	
+	<select id="showkaoshi" parameterType="map" resultType="map">
+		select
+		*
+		from ks_info
+		where 2 > 1
+		and ks_bj = #{ks_bj}
+	</select>
+	
+</mapper>
