@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>后台首页</title>
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/gVerify.js"></script>
+    <script src="../js/houtai.js"></script>
+    <script src="../js/zui.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../css/simditor.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/zui.min.css"/>
+    <script type="text/javascript" src="../js/module.js"></script>
+    <script type="text/javascript" src="../js/hotkeys.js"></script>
+    <script type="text/javascript" src="../js/simditor.js"></script>
+</head>
+<body>
+<div style="background-color: #3280FC">
+    <div style="line-height: 50px;color: #ffffff;font-weight: bold;padding-left: 100px;height: 50px;">
+        欢迎<span id="adminid"></span></div>
+</div>
+
+<div>
+    <div style="float: left;width: 200px;">
+        <nav class="menu" data-ride="menu" style="width: 200px">
+            <ul id="treeMenu" class="tree tree-menu" data-ride="tree">
+                <li><a onclick="showPage('xueshengguanli')"><i class="icon icon-th"></i>学生管理</a>
+                </li>
+                <li><a onclick="showPage('jiaoshiguanli')"><i class="icon icon-user"></i>教师管理</a>
+                </li>
+                <li>
+                    <a href="#"><i class="icon icon-file-pdf"></i>公告管理</a>
+                    <ul>
+                        <li><a onclick="showPage('chaxungonggao')">查询公告</a></li>
+                        <li><a onclick="showPage('tianjiagonggao')">添加公告</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="icon icon-tag"></i>课程管理</a>
+                    <ul>
+                        <li><a onclick="showPage('chaxunkecheng')">查询课程</a></li>
+                        <li><a onclick="showPage('tianjiakecheng')">添加课程</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="icon icon-group"></i>班级管理</a>
+                    <ul>
+                        <li><a onclick="showPage('chaxunbanji')">查询班级</a></li>
+                        <li><a onclick="showPage('tianjiabanji')">添加班级</a></li>
+                    </ul>
+                </li>
+                <li><a onclick="tuichu()"><i class="icon icon-signout"></i>退出系统</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div style="float: left;width: 70%;">
+        <div class="panel panel-info ppage" id="xueshengguanli">
+            <div class="form-group" style="margin-top: 10px;">
+                <div class="col-lg-3">
+                    <input type="email" class="form-control" id="ssxs_name" placeholder="请输入学生姓名">
+                </div>
+                <div class="col-lg-3">
+                    <button class="btn btn-default" type="submit" id="xsgl_btn">查询</button>
+                </div>
+            </div>
+            <div style="clear:both;margin-bottom: 10px;"></div>
+            <div class="panel-heading">
+                学生管理
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>学生姓名</th>
+                        <th>学生账号</th>
+                        <th>学生密码</th>
+                        <th>学生班级</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="xuesheng_table">
+                    <tr>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn">删除</button>
+                                <button class="btn">修改信息</button>
+                                <button class="btn">上传成绩</button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                    </tfoot>
+                </table>
+            </div>
+            <div style="text-align: center;">
+                <ul class="pager" id="xuesheng_fenye">
+                    <li class="previous"><a href="your/nice/url">«</a></li>
+                    <li><a href="your/nice/url">1</a></li>
+                    <li class="active"><a href="your/nice/url">2</a></li>
+                    <li><a href="your/nice/url">3</a></li>
+                    <li><a href="your/nice/url">4</a></li>
+                    <li><a href="your/nice/url">5</a></li>
+                    <li class="next"><a href="your/nice/url">»</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="panel panel-info ppage" style="display: none" id="jiaoshiguanli">
+
+            <div class="form-group" style="margin-top: 10px;">
+                <div class="col-lg-3">
+                    <input type="email" class="form-control" id="ssjs_name" placeholder="请输入教师姓名">
+                </div>
+                <div class="col-lg-3">
+                    <button class="btn btn-default" type="submit" id="jsgl_btn">查询</button>
+                </div>
+            </div>
+            <div style="clear:both;margin-bottom: 10px;"></div>
+
+            <div class="panel-heading">
+                教师管理
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>教师姓名</th>
+                        <th>教师账号</th>
+                        <th>教师密码</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="js_table">
+                    <tr>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn">删除</button>
+                                <button class="btn">修改信息</button>
+                                <button class="btn">添加课程</button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div style="text-align: center;">
+                <ul class="pager" id="js_fenye">
+                    <li class="previous"><a href="your/nice/url">«</a></li>
+                    <li><a href="your/nice/url">1</a></li>
+                    <li class="active"><a href="your/nice/url">2</a></li>
+                    <li><a href="your/nice/url">3</a></li>
+                    <li><a href="your/nice/url">4</a></li>
+                    <li><a href="your/nice/url">5</a></li>
+                    <li class="next"><a href="your/nice/url">»</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <div class="panel panel-info ppage" style="display: none" id="anpaikecheng">
+            <div class="panel-heading">
+                安排老师课程
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <caption id="jskc_name">Optional table caption.</caption>
+                    <a onclick="shuaxinkc()">刷新</a>
+                    <thead>
+                    <tr>
+                        <th>课程名称</th>
+                        <th>班级</th>
+                        <th>上课时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="ls_kc_table">
+                    <tr>
+                        <td>语文</td>
+                        <td>一年级一班</td>
+                        <td>周一9：00~11:00</td>
+                        <td>
+                            <button class="btn">删除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="form-group" style="margin-top: 10px;">
+                    <div class="col-lg-9">
+                        <div class="col-lg-3">
+                            课程名称：
+                            <select style="line-height: 30px;height: 30px;" class="sykc" id="tjkc">
+                                <option>语文</option>
+                            </select>
+                        </div>
+
+                        <div class="col-lg-3">
+                            班级：
+                            <select style="line-height: 30px;height: 30px;" class="sybanji"
+                                    id="tjbj">
+                                <option>语文</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-4">
+                            上课时间：
+                            <select style="line-height: 30px;height: 30px;" id="skxq">
+                                <option>周一</option>
+                                <option>周二</option>
+                                <option>周三</option>
+                                <option>周四</option>
+                                <option>周五</option>
+                            </select>
+                            <select style="line-height: 30px;height: 30px;" id="sksj">
+                                <option>一二节</option>
+                                <option>三四节</option>
+                                <option>五六节</option>
+                                <option>七八节</option>
+                                <option>九十节</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2">
+                            <button class="btn btn-default" type="submit" id="js_tjkc_btn">添加课程
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+
+
+        <div class="panel panel-info ppage" style="display: none" id="xgxsyemian">
+            <div class="panel-heading">
+                修改学生基本信息
+            </div>
+            <div class="panel-body">
+                <div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">学生姓名</label>
+                        <input type="text" class="form-control" id="xg_xs_mingzi"
+                               placeholder="请输入学生姓名">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">学生账号</label>
+                        <input type="text" class="form-control" id="xg_xs_name"
+                               placeholder="请输入学生账号">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">学生密码</label>
+                        <input type="text" class="form-control" id="xg_xs_password"
+                               placeholder="请输入学生密码">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">班级</label>
+                        <select style="line-height: 30px;height: 30px;" class="sybanji"
+                                id="xg_xs_banji">
+                            <option>语文</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-default" id="xg_xs_btn">修改</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel panel-info ppage" style="display: none" id="chaxunchengji">
+            <div class="panel-heading">
+                查询成绩
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <caption id="xscj_name">Optional table caption.</caption>
+                    <a onclick="shuaxincj()">刷新</a>
+                    <thead>
+                    <tr>
+                        <th>课程名称</th>
+                        <th>成绩</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="xs_cj_table">
+                    <tr>
+                        <td>语文</td>
+                        <td>一年级一班</td>
+                        <td>周一9：00~11:00</td>
+                        <td>
+                            <button class="btn">删除</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="form-group" style="margin-top: 10px;">
+                    <div class="col-lg-9">
+                        <div class="col-lg-3">
+                            课程名称：
+                            <select style="line-height: 30px;height: 30px;" class="sykc"
+                                    id="tjcj_kc">
+                                <option>语文</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3">
+                            <input class="form-control" placeholder="请输入成绩" id="tjcj"/>
+                        </div>
+                        <div class="col-lg-2">
+                            <button class="btn btn-default" type="submit" id="xs_tjcj_btn">添加成绩
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+
+
+        <div class="panel panel-info ppage" style="display: none" id="xiugaijiaoshi">
+            <div class="panel-heading">
+                修改教师基本信息
+            </div>
+            <div class="panel-body">
+                <div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">教师姓名</label>
+                        <input type="text" class="form-control" id="xg_js_mingzi"
+                               placeholder="请输入教师姓名">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">教师账号</label>
+                        <input type="text" class="form-control" id="xg_js_name"
+                               placeholder="请输入教师账号">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">教师密码</label>
+                        <input type="text" class="form-control" id="xg_js_password"
+                               placeholder="请输入教师密码">
+                    </div>
+                    <button type="submit" class="btn btn-default" id="xg_js_btn">修改</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel panel-info ppage" style="display: none" id="xiugaigonglv">
+            <div class="panel-heading">
+                修改公告
+            </div>
+            <div class="panel-body">
+                <div>
+                    <div class="form-group">
+                        <label for="exampleInputAccount1">标题</label>
+                        <input type="text" class="form-control" placeholder="请输入标题"
+                               id="xg_gl_biaoti">
+                    </div>
+                    <div class="form-group">
+                        <label>内容</label>
+                        <textarea id="xg_editor"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="xg_gl_btn">提交</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel panel-info ppage" style="display: none" id="chaxungonggao">
+            <div class="form-group" style="margin-top: 10px;">
+                <div class="col-lg-3">
+                    <input type="email" class="form-control" id="gonglv_sousuocon"
+                           placeholder="请输入公告标题">
+                </div>
+                <div class="col-lg-3">
+                    <button class="btn btn-default" type="submit" id="gonglv_btn">查询</button>
+                </div>
+            </div>
+            <div style="clear:both;margin-bottom: 10px;"></div>
+            <div class="panel-heading">
+                查询公告
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>公告标题</th>
+                        <th>上传日期</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="gonglv_table">
+                    <tr>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn">删除</button>
+                                <button class="btn">修改信息</button>
+                                <button class="btn">添加课程</button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="panel panel-info ppage" style="display: none" id="tianjiagonggao">
+            <div class="panel-heading">
+                添加公告
+            </div>
+            <div class="panel-body">
+                <div>
+                    <div class="form-group">
+                        <label for="exampleInputAccount1">标题</label>
+                        <input type="text" class="form-control" placeholder="请输入标题"
+                               id="sc_gl_biaoti">
+                    </div>
+                    <div class="form-group">
+                        <label>内容</label>
+                        <textarea class="editor" id="gleditor"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="gonglve-btn">提交</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel panel-info ppage" style="display: none" id="chaxunkecheng">
+            <div class="form-group" style="margin-top: 10px;">
+                <div class="col-lg-3">
+                    <input type="email" class="form-control" id="kecheng_sousuocon"
+                           placeholder="请输入课程名称">
+                </div>
+                <div class="col-lg-3">
+                    <button class="btn btn-default" type="submit" id="kecheng_btn">查询</button>
+                </div>
+            </div>
+            <div style="clear:both;margin-bottom: 10px;"></div>
+            <div class="panel-heading">
+                查询课程
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>课程名称</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="kc_body">
+                    <tr>
+                        <td>...</td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn">删除</button>
+                                <button class="btn">修改名称</button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div style="text-align: center;">
+                <ul class="pager" id="kc_fenye">
+                    <li class="previous"><a href="your/nice/url">«</a></li>
+                    <li><a href="your/nice/url">1</a></li>
+                    <li class="active"><a href="your/nice/url">2</a></li>
+                    <li><a href="your/nice/url">3</a></li>
+                    <li><a href="your/nice/url">4</a></li>
+                    <li><a href="your/nice/url">5</a></li>
+                    <li class="next"><a href="your/nice/url">»</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="panel panel-info ppage" style="display: none" id="tianjiakecheng">
+            <div class="panel-heading">
+                添加课程
+            </div>
+            <div class="panel-body">
+                <div>
+                    <div class="form-group" style="line-height: 27px;">
+                        <div class="col-lg-1">
+                            <label for="exampleInputAccount1">课程名称</label>
+                        </div>
+                        <div class="col-lg-11">
+                            <input type="text" class="form-control" placeholder="请输入课程名称"
+                                   id="tjkcinp">
+                            <div style="clear: both;"></div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 5px;"
+                            id="shangchuankecheng">提交
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel panel-info ppage" style="display: none" id="chaxunbanji">
+            <div class="panel-heading">
+                查询班级
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>班级名称</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="bj_body">
+                    <tr>
+                        <td>...</td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn">删除</button>
+                                <button class="btn">修改名称</button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                    </tfoot>
+                </table>
+            </div>
+            <div style="text-align: center;">
+                <ul class="pager" id="bj_fenye">
+                    <li class="previous"><a href="your/nice/url">«</a></li>
+                    <li><a href="your/nice/url">1</a></li>
+                    <li class="active"><a href="your/nice/url">2</a></li>
+                    <li><a href="your/nice/url">3</a></li>
+                    <li><a href="your/nice/url">4</a></li>
+                    <li><a href="your/nice/url">5</a></li>
+                    <li class="next"><a href="your/nice/url">»</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="panel panel-info ppage" style="display: none" id="tianjiabanji">
+            <div class="panel-heading">
+                添加班级
+            </div>
+            <div class="panel-body">
+                <div>
+                    <div class="form-group" style="line-height: 27px;">
+                        <div class="col-lg-1">
+                            <label for="exampleInputAccount1">班级名称</label>
+                        </div>
+                        <div class="col-lg-11">
+                            <input type="text" class="form-control" id="bj_name"
+                                   placeholder="请输入班级名称">
+                            <div style="clear: both;"></div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 5px;"
+                            id="cjbj">提交
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="kcxgmodal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">修改课程名称</h4>
+            </div>
+            <div class="modal-body">
+                <input class="form-control" placeholder="请输入课程名称" id="xg_kc_mc"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="xgkcbtn">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="bjxgmodal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">修改班级名称</h4>
+            </div>
+            <div class="modal-body">
+                <input class="form-control" placeholder="请输入班级名称" id="xg_bj_mc"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="xgbjbtn">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="xgcjmodal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">修改成绩</h4>
+            </div>
+            <div class="modal-body">
+                <input class="form-control" placeholder="请输入修改后成绩" id="xg_xs_cj"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" id="xgcjbtn">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<script>
+    $(function () {
+        var editor, toolbar;
+        Simditor.locale = 'zh-CN';
+        toolbar = ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent', 'alignment'];
+
+        editor = new Simditor({
+            textarea: $('.editor'),
+            placeholder: '这里输入文字...',
+            toolbar: toolbar,
+        });
+
+        gl_editor = new Simditor({
+            textarea: $('#gleditor'),
+            placeholder: '这里输入文字...',
+            toolbar: toolbar,
+        });
+
+        xg_editor = new Simditor({
+            textarea: $('#xg_editor'),
+            placeholder: '这里输入文字...',
+            toolbar: toolbar,
+        });
+    })
+</script>
+</body>
+</html>

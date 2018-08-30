@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/gVerify.js"></script>
+    <script src="../js/qianduan.js"></script>
+    <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+<div style="background-color: #F1F1F1;">
+    <div class="container">
+        <div style="float: right;padding: 5px;display: none;" id="gbtns" class="noUser">
+            <a onclick="toPage('denglu')">登录</a>
+            |
+            <a onclick="toPage('zhuce')">立即注册</a>
+        </div>
+        <div style="float: right;padding: 5px;display: none;" class="hasUser">
+            欢迎&nbsp;<span id="userid"></span>
+            &nbsp;<a onclick="tuichu()">退出</a>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="margin-top: 20px;">
+    <div class="col-lg-3">
+        <a onclick="toPage('shouye')"><img src="../img/logo.png"></a>
+    </div>
+    <div class="col-lg-6" style="float: right;">
+        <a class="pagebtn active" onclick="toPage('shouye')">首页</a>
+        <a class="pagebtn" onclick="toPage('gongshichakan')">公示查看</a>
+        <a class="pagebtn" onclick="toPage('xueshengzhongxin')">学生中心</a>
+        <a class="pagebtn" onclick="toPage('jiaoshizhongxin')">教师中心</a>
+    </div>
+</div>
+
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="../img/banner01.png" alt="...">
+            <div class="carousel-caption">
+                ...
+            </div>
+        </div>
+        <div class="item">
+            <img src="../img/banner02.png" alt="...">
+            <div class="carousel-caption">
+                ...
+            </div>
+        </div>
+        <div class="item">
+            <img src="../img/banner03.png" alt="...">
+            <div class="carousel-caption">
+                ...
+            </div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button"
+       data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button"
+       data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div style="border-bottom: 3px solid #C4B098;margin-top: 50px;font-weight: bold;font-size: 20px;"
+     class="container">
+    学校简介
+</div>
+
+<div class="container" style="margin-top: 20px;">
+        <pre>
+
+	加来中学座落于厦门市东南部风光宜人的石鼓山下，是厦门市政府于1993年开办的一所公办初中校。学校原名为“厦门市洪文学校”，翌年接受香港爱国人士邵逸夫先生的捐款并更名
+
+为“厦门市加来中学”。学校现有教职工124人，专任教师114人，中、高级教师59人。目前开设38个教学班，学生1812人，其中外地来厦务工的农民工子女有1546人，占学生总数的
+
+85.3%。近几年来，我校全体教职工恪尽职守、努力奋斗，共同致力于素质教育与课程改革实践，争创人民满意的学校，逐渐形成了自己的办学特色，并取得了丰硕成果。学校重视对师资
+
+队伍建设的总体规划，大力加强教师职业道德建设，努力搭好教师培训的“四个平台”。投入培训经费，选送优秀教师参加国家、省、市级、区级骨干教师培训，先后共计50人多次参加各级
+
+各列教育培训。  学校把实施素质教育作为教学工作的核心，加大课改和科研的力度。广泛开展教学课题研究，积极进行素质教育的实践探索。针对我校生源绝大部分是进城务工人员子女，
+
+为此我校开始了《实施成功教育》课题研究，该课题被定为市级科研课题，并以此为契机不断地推动我校教科研的发展步伐；2006年10月起学校英语组、语文组先后被授予全国教育科学
+
+规划教育部规划课题重点子课题实验基地；学校还承担了省级子课题5个、市级课题5个、区级课题2个，另有校级课题21个，研究性学习课题70多个，专任教师参加课题研究人数达90%
+
+以上，近三年来有40多篇论文在市、区级以上的刊物上发表。随着厦门经济的腾飞，外地来厦务工人员不断增加，他们为特区建设做出贡献的同时，其子女接受义务教育问题也日益突出。
+
+2004年我校作为接收进城务工人员子女就学的三所公办中学之一，近年来招收进城务工人员子女入学的人数占学生总数的比例不断提高。根据这种变化，学校有针对性地采取措施，及时
+
+解决进城务工人员子女在思想、学习、生活等方面存在的问题和困难，让进城务工人员子女与本地学生在我校享受着同等的教育和待遇。经过几年的探究、研讨、开发，我校现已形成一套
+
+有特色、有成效的针对进城务工人员子女教育的办学模式。
+        </pre>
+</div>
+
+
+<div style="border-bottom: 3px solid #14A296;margin-top: 50px;font-weight: bold;font-size: 20px;"
+     class="container">
+    治理架构
+</div>
+
+<div class="container" style="margin-top: 20px;">
+        <pre>
+
+ 	长期以来，许多中外学者从不同的研究角度出发，对管理做出了多种解释。有人认为管理就是服务，有人认为管理就是决策，有人认为管理就是协调。我认为：管理是管理者或管理机
+
+ 	构为了达到目标的一种活动过程，这一过程需要决策、协调和规划，从而实现内部资源的优化和合理配置，进而实现既定目标。那么，当前学校内部治理结构存在着哪些问题？我认为
+
+ 	有以下主要问题：一是学校的管理体制和机制需要完善和创新；二是科学决策和民主决策的水平不高；三是学校注重教师专业成长，而缺乏引领教师的精神成长；四是社会力量参与学
+
+ 	校管理评价的力度不够，水平不高。针对以上存在的问题，在教育管理实践中，我做了以下尝试。创新管理机制学校班子建设是教师团队的重中之重。针对我校现有行政人员年龄普遍
+
+ 	偏大、缺乏动力与活力的现状，我的做法是：改变行政队伍的作风，盘活行政队伍的资源。我首先提出“在岗、在行、在状态”的领导作风并带头执行，然后不断创新管理模式。先是
+
+ 	设立见习行政岗位，通过竞聘，选拔聘任年轻有干劲的教师担任各处室的见习主任，作为现任行政的助手。后来又增加见习部长岗位，让更多的年轻人走上领导岗位锻炼。见习主任和
+
+ 	见习部长没有补贴，不计算工作量，但可以列席行政会议或部长会议，行使行政或部长的部分权限。这样，一方面为青年教师搭建了成长平台，实现了内部资源的优化和合理配置；另
+
+ 	一方面又盘活了现任行政队伍的资源，为管理团队注入了新的活力和动力。事实证明，这一做法成效明显，学校发生很大变化。同时也有几位见习主任真正走上领导岗位，成为学校班
+
+ 	子成员。完善民主决策决策对学校发展和师生而言至关重要。在管理实践中，我比较注重决策的科学性和民主性。一是将学校行政会议作为学校的决策中心，广泛听取行政班子的意见
+
+ 	和建议；二是见习行政人员参与学校管理后，他们有机会列席行政会议，使基层的声音得以及时反映，为决策提供充分依据；三是每周的行政会议实行轮值制度，要求每位行政人员都
+
+ 	要结合学校或部门存在的问题选定主题作中心发言，做到“每周一议”，先由该行政人员提出问题与解决办法，然后广泛征求行政团队意见，最后形成解决方案。这样，通过多方面多
+
+ 	角度论证，很好地实现科学民主的决策，力求使决策公正与透明。关注内在需求我们的具体做法是：引导教师更加重视自己的教育事业，在帮助学生成长的同时，自身心灵也得到净化；
+
+ 	让每位教师都明白，教师的成功体现在学生身上；给不同教师提供锻炼的平台，让他们充分展现才华，从而获得成功的喜悦，增强幸福感和成就感。例如每周让1至2位教师利用教师
+
+ 	大讲坛，面对全校教师谈人生，谈兴趣，谈读书收获，共同分享他们内心深处的温暖与感动；设计不同类型的培训内容，让教师自己报名参加，使培训成为其内在的需求。引入社会力
+
+ 	量我认为，完善学校内部治理结构就是要明确学校各部门主体的责任与关系，激发社会力量和家长参与学校管理的积极性。在日常的教育管理中，我们充分挖掘学校周边的资源，如学
+
+ 	生家长、合作企业、行业协会等。利用开展各种活动的契机，邀请他们到校参与并指导。我们为此先后成立家委会、家长义工协会、学科专业发展委员会等各类组织。我们还先后与顺
+
+ 	德职业技术学院、清远职业技术学院、韩国庆北专门大学等高校签署中高职对接协议，与企业合作办班，引入电商公司打造创业精英班，等等。学校师生与各种社会力量共同开展校内
+
+ 	外的教育教学活动，形成了共治共建的良好氛围。今后，我们还将学习企业做法，设立董事会、监事会等部门，将决策权、监督权和执行权有效分立，完善教职工代表大会等，通过第
+
+ 	三方力量，对学校进行客观公正的评价，引领学校向前发展。
+
+ 		总之，学校管理是一门学问，是一门艺术，需要校长在实际工作中不断摸索、不断创新。校长要有民主科学的意识，做到权力下移、决策民主、权力制衡、以人为本，让学校在
+
+ 	优质的管理体制和运行机制下脱颖而出。
+
+        </pre>
+</div>
+
+
+<div style="border-bottom: 3px solid #B79E00;margin-top: 50px;font-weight: bold;font-size: 20px;"
+     class="container">
+    师资力量
+</div>
+
+<div class="container" style="margin-top: 20px;">
+        <pre>
+
+		学校教职工人数是128人，其中专职教师有100人，其中有区学科带头人1名，区高级教师指导教师4名；高级教师48名，占教师总数的48%，一级以上的教师占教师总数的
+
+96%，师生比为1：11，教师中硕士学历有7人，本科学历有89人，大专学历有4人，达标比例100%。近年来，教师编写出版教材、教参20余本；去年，教师获全国、市、区教学竞赛和
+
+论文评比76个奖项。提升教师专业程度对于提升学校办学品质具有重要意义，近日，为推进我校教师专业发展工作，由上级教育主管部门组成的教师专业发展示范校评审组一行前来我校，对
+
+我校教师专业发展示范校的申请进行调研评审。
+
+        </pre>
+</div>
+
+
+<div style="border-bottom: 3px solid #F57100;margin-top: 50px;font-weight: bold;font-size: 20px;"
+     class="container">
+    绿色校园
+</div>
+
+<div class="container" style="margin-top: 20px;">
+        <pre>
+
+		学校教职工人数是128人，其中专职教师有100人，其中有区学科带头人1名，区高级教师指导教师4名；高级教师48名，占教师总数的48%，一级以上的教师占教师总数的
+
+96%，师生比为1：11，教师中硕士学历有7人，本科学历有89人，大专学历有4人，达标比例100%。近年来，教师编写出版教材、教参20余本；去年，教师获全国、市、区教学竞赛和
+
+论文评比76个奖项。 提升教师专业程度对于提升学校办学品质具有重要意义，近日，为推进我校教师专业发展工作，由上级教育主管部门组成的教师专业发展示范校评审组一行前来我校，对
+
+我校教师专业发展示范校的申请进行调研评审。
+        </pre>
+</div>
+
+
+</body>
+</html>
